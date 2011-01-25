@@ -68,6 +68,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :tab_admin, I18n.t('navigation.administration'), admin_path, :if => Proc.new { user_signed_in? && current_user.admin? } do |admin|
       admin.item :tab_admin_home, I18n.t('navigation.home'), admin_path
+      admin.item :tab_admin_users, I18n.t('navigation.admin.users'), admin_users_path
     end # :admin
   end
 end

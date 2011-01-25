@@ -14,4 +14,11 @@ describe User do
     end
   end
 
+  describe ".search" do
+    it "should execute a LIKE query with the supplied argument" do
+      User.should_receive(:where).with("email LIKE ?", "%foo%")
+      User.search("foo")
+    end
+  end
+
 end

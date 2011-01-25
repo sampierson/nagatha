@@ -61,4 +61,8 @@ Nagatha::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   match 'admin' => 'admin/home#index'
 
+  namespace :admin do
+    resources :users
+  end
+
 end

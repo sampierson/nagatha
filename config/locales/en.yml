@@ -1,11 +1,32 @@
 --- 
 en: 
+  activerecord: 
+    models: 
+      user: User
+    attributes: 
+      user: 
+        created_at: Created
+        role: Role
+        sign_in_count: Sign-ins
+        current_sign_in_ip: Current sign-in ip
+        locked_at: Locked
+        current_sign_in_at: Current sign-in at
+        password: Password
+        email: Email address
+        confirmed_at: Confirmed
+  current_sign_in: Current sign-in
+  time_ago: "%{time} ago"
   hello: Hello world
-  not_authorized: I'm sorry, you're not authorized to access that page.
+  at: At
+  users: Users
+  from_ip: From IP
+  last_sign_in: Last sign-in
   navigation: 
     administration: Administration
+    preferences: Preferences
     admin: 
       settings: Settings
       users: Manage Users
-    preferences: Preferences
     home: Home
+  not_authorized: I'm sorry, you're not authorized to access that page.
+  search: Search

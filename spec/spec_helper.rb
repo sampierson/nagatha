@@ -25,4 +25,5 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
   config.include JsFixtureBuilder
+  config.include Devise::TestHelpers, :type => :controller
 end

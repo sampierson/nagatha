@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
     role == 'admin' && confirmed_at && !locked_at
   end
 
+  def self.search(search)
+    if search
+      where('email LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 end
