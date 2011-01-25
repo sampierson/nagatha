@@ -44,3 +44,4 @@ gem "jasmine", :group => [:development, :test]
 gem "simple-navigation"
 gem "will_paginate"
 gem "enumerate_it"
+gem "spork", :group => [:development, :test]
