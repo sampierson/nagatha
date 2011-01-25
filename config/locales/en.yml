@@ -1,10 +1,11 @@
 --- 
 en: 
   hello: Hello world
+  not_authorized: I'm sorry, you're not authorized to access that page.
   navigation: 
     administration: Administration
-    preferences: Preferences
     admin: 
       settings: Settings
       users: Manage Users
+    preferences: Preferences
     home: Home

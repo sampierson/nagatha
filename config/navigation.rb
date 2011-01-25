@@ -65,5 +65,9 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :tab_home, I18n.t('navigation.home'), root_path do |home|
       # Include empty block to get simple-navigtion to generate empty <ul>s
     end # :home
+
+    primary.item :tab_admin, I18n.t('navigation.administration'), admin_path, :if => Proc.new { user_signed_in? && current_user.admin? } do |admin|
+      admin.item :tab_admin_home, I18n.t('navigation.home'), admin_path
+    end # :admin
   end
 end
