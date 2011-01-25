@@ -42,3 +42,4 @@ gem "devise"
 gem "cancan"
 gem "jasmine", :group => [:development, :test]
 gem "simple-navigation"
+gem "will_paginate"
