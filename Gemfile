@@ -31,3 +31,4 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 gem "ruby-debug", :group => [:development, :test]
 gem "rspec-rails", :group => [:development, :test]
+gem "rcov", :group => :test
