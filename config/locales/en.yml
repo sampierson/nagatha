@@ -1,5 +1,6 @@
 --- 
 en: 
+  current_sign_in: Current sign-in
   activerecord: 
     models: 
       user: User
@@ -9,34 +10,37 @@ en:
         role: Role
         sign_in_count: Sign-ins
         current_sign_in_ip: Current sign-in ip
-        locked_at: Locked
         current_sign_in_at: Current sign-in at
+        locked_at: Locked
         password: Password
-        email: Email address
         confirmed_at: Confirmed
-  current_sign_in: Current sign-in
-  time_ago: "%{time} ago"
+        email: Email address
+  settings_saved: Settings saved
   enumerations: 
     site_availability: 
       prevent_user_logins: Prevent new user logins
       prevent_new_signups: Allow logins but prevent new signups
       admins_only: Log out everyone but admins
       fully_operational: Fully operational
+  time_ago: "%{time} ago"
   hello: Hello world
-  at: At
-  users: Users
-  from_ip: From IP
+  crud: 
+    save: Save
   last_sign_in: Last sign-in
+  from_ip: From IP
+  users: Users
+  at: At
+  not_authorized: I'm sorry, you're not authorized to access that page.
   navigation: 
     administration: Administration
-    preferences: Preferences
     admin: 
       settings: Settings
       users: Manage Users
+      site_settings: Site Settings
+    preferences: Preferences
     home: Home
-  not_authorized: I'm sorry, you're not authorized to access that page.
+  search: Search
   site_availability: 
     legend: Site Availability
     sorry_no_signups: Sorry, new users may not sign-up at this time. Please check back later.
     maintenance: Sorry, the site is currently undergoing maintenance. Please check back later.
-  search: Search

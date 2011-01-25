@@ -62,6 +62,7 @@ Nagatha::Application.routes.draw do
   match 'admin' => 'admin/home#index'
 
   namespace :admin do
+    resource :settings, :only => [:edit, :update]
     resources :users
   end
 
