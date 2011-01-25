@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :conditionally_logout_non_admins
   before_filter :set_locale
 
   AVAILABLE_LOCALES = Dir.glob(Rails.root.join('config', 'locales', '*.yml')).collect do |path|
@@ -31,6 +32,13 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = exception.message
     redirect_to root_url
+  end
+
+  def conditionally_logout_non_admins
+    if user_signed_in? && AppConfiguration.site_availability <= SiteAvailability::ADMINS_ONLY && current_user.role != 'admin'
+      flash[:alert] = t('site_availability.maintenance')
+      sign_out_and_redirect(:user)
+    end
   end
 
 end
