@@ -38,3 +38,4 @@ gem "webrat", :group => [:development, :test]
 gem "haml"
 gem "compass"
 gem "html5-boilerplate"
+gem "devise"
