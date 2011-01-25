@@ -40,3 +40,4 @@ gem "compass"
 gem "html5-boilerplate"
 gem "devise"
 gem "cancan"
+gem "jasmine", :group => [:development, :test]
