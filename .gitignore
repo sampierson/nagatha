@@ -5,3 +5,4 @@ tmp/**/*
 db/schema.rb
 .idea
 !.gitignore
+public/stylesheets
