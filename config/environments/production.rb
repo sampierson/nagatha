@@ -54,3 +54,6 @@ Nagatha::Application.configure do
   end
 
 end
+
+
+Sass::Plugin.options[:never_update] = true
