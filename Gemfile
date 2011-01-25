@@ -35,3 +35,6 @@ gem "rcov", :group => :test
 gem "cucumber-rails", :group => [:development, :test]
 gem "nokogiri", :group => [:development, :test]
 gem "webrat", :group => [:development, :test]
+gem "haml"
+gem "compass"
+gem "html5-boilerplate"
