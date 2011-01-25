@@ -11,6 +11,12 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+  when /the sign in page/; new_user_session_path
+
+  when /the confirmation link for user "([^"]+)"/
+    user = User.find_by_email($1)
+    user_confirmation_url(user, :confirmation_token => user.confirmation_token)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
