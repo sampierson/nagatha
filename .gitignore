@@ -6,3 +6,5 @@ db/schema.rb
 .idea
 !.gitignore
 public/stylesheets
+
+/spec/javascripts/fixtures
