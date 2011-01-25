@@ -46,13 +46,6 @@ Nagatha::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  config.action_mailer.default_url_options = { :host => 'nagatha.com' }
-  smtp_settings_file = Rails.root.join('config', 'smtp_settings.yml')
-  if File.exist?(smtp_settings_file)
-    config.action_mailer.smtp_settings = YAML.load_file(Rails.root.join(smtp_settings_file))
-  end
-
 end
 
 
