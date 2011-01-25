@@ -45,3 +45,4 @@ gem "simple-navigation"
 gem "will_paginate"
 gem "enumerate_it"
 gem "spork", :group => [:development, :test]
+gem "capistrano", :group => :development
