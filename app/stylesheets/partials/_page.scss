@@ -11,6 +11,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+h1 { font-size: 2em;    margin: .67em 0;  }
+h2 { font-size: 1.5em;  margin: .83em 0;  }
+h3 { font-size: 1.17em; margin: 1em 0;    }
+h4 { font-size: 1em;    margin: 1.33em 0; }
+h5 { font-size: .83em;  line-height: 1.17em; margin: 1.67em 0; }
+h6 { font-size: .67em;  margin: 2.33em 0; }
+
 strong, th {
   font-weight: bold;
 }
@@ -31,17 +43,194 @@ input:invalid, textarea:invalid {
 .no-boxshadow input:invalid,
 .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
+.center {
+  text-align: center;
+}
 
 //-----------------------------------
 // Add your own custom styles below
 //-----------------------------------
 
-body {}
+$gutter-width: 30px;
 
-#container {}
+html {
+  height: 100%;
+}
 
-header {}
+body {
+  height: 100%;
 
-#main {}
+  font-size: 14px;
+  font-color: $font-color;
+}
 
-footer {}
+#container {
+  min-height: 100%;
+}
+
+$header-height: 130px;
+
+header {
+  height: $header-height;
+  /*margin-bottom: 30px;*/
+  color: $header-font-color;
+  background-color: $header-bg-color;
+
+  #logo {
+    height: 80px;
+    line-height: 80px;
+    padding-left: $gutter-width;
+    font-weight: bold;
+    font-size: 2.5em;
+    a {
+      text-decoration: none;
+      color: $header-font-color;
+    }
+  }
+
+  #user_nav {
+    float: right;
+    height: 40px;
+    margin-top: 30px;
+    padding-right: 20px;
+    text-align: right;
+  }
+}
+
+$main-padding: 20px;
+$footer-height: 20px;
+$footer-padding: 5px;
+$total-footer-height: $footer-height + $footer-padding * 2;
+
+#main {
+  padding: $main-padding ($gutter-width + $main-padding) ($main-padding + $total-footer-height) ($gutter-width + $main-padding);
+}
+
+nav {
+  $tab-bar-height: 30px;
+  width: 100%;
+
+  ul {
+    float: left;
+    position: relative; // So subtabs can position relative to this
+    height: $tab-bar-height;
+    width: 100%;
+
+    background-color: $tab-inactive-color;
+  }
+
+  li {
+    display: block;
+    float: left;
+    height: $tab-bar-height;
+
+    background-color: $tab-inactive-color;
+    font-size: 16px;
+
+    &:first-child {
+      margin-left: $gutter-width;
+    }
+
+    &:hover {
+      background-color: $tab-hover-color;
+    }
+
+    &.selected {
+      background-color: $tab-active-color; // Highlight actvie tab
+      &:hover {
+        background-color: $tab-active-color; // Don't change color on hover
+      }
+    }
+
+    > a, > a:hover, > a:visited, > a:active {
+      line-height: $tab-bar-height;
+      padding: 6px 20px;
+
+      font-weight: bold;
+      color: #FFF;
+      text-decoration: none;
+    }
+  }
+
+  /*
+   * Second row - subnavigation
+   *
+   *   - hide second row by default
+   *   - convert tab and entire subtab bar to hover color
+   *   - hovering over subtabs changes it to active color
+   */
+
+  li > ul {
+    // Line all subtabs up under top level tabs
+    position: absolute;
+    top: $tab-bar-height;
+    left: 0;
+    // Hide all subtabs by default
+    display: none;
+
+    > li {
+      font-size: 14px;
+    }
+  }
+
+  li:hover > ul {
+    /* When hovering over any top-level tab, show it's subtabs, covering any other displayed subtabs */
+    display: block;
+    z-index: 6000;
+    background-color: $tab-hover-color;
+
+    li {
+      background-color: $tab-hover-color;
+
+      &:hover {
+        background-color: $subtab-hover-color;
+      }
+    }
+  }
+
+
+  /*
+   * Style subtabs for a selected top tab:
+   *
+   *   - always show subtabs for currently selected top level tab, colored as active
+   *   - hovering over subtabs changes them to hover color
+          except a selected subtab, which doesn't change color on hover
+   */
+
+  li.selected > ul {
+    display: block;
+    background-color: $tab-active-color;
+
+    > li {
+      background-color: $tab-active-color;
+    }
+
+    > li.selected {
+      padding: 0 14px;
+
+      &:hover {
+        background-color: $tab-active-color;  // Don't change color on hover
+      }
+
+      a, a:hover, a:active, a:visited {
+        padding: 3px 6px;
+
+        font-weight: bold;
+        color: $header-font-color;
+        text-decoration: none;
+
+        background-color: white; // Highlight selected subtab
+      }
+    }
+  }
+}
+
+footer {
+  height: $footer-height;
+  padding: $footer-padding;
+  margin-top: -1 * $total-footer-height;
+
+  background-color: $footer-bg-color;
+
+  text-align: center;
+}
