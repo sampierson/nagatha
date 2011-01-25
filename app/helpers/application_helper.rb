@@ -8,4 +8,13 @@ module ApplicationHelper
     "#{underscored_controller_name} #{underscored_controller_name}_#{action_name}"
   end
 
+  def javascript_include_tags
+    js_files = %w{
+      rails
+      plugins
+      nagatha/nagatha
+    } + Dir.glob("#{Rails.root}/public/javascripts/nagatha/pages/**/*.js").map { |file| file.gsub(/^#{Rails.root}\/public/, '') }
+    javascript_include_tag js_files
+  end
+
 end
