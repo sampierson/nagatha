@@ -62,8 +62,8 @@ SimpleNavigation::Configuration.run do |navigation|
     # You can turn off auto highlighting for a specific level
     # primary.auto_highlight = false
 
-    primary.item :tab_home, I18n.t('navigation.home'), root_path do |home|
-      # Include empty block to get simple-navigtion to generate empty <ul>s
+    primary.item :tab_home, I18n.t('navigation.home'), root_path, :highlights_on => %r{(^/$|todos)} do |home|
+      home.item :todo_list, I18n.t('navigation.my_todos'), todo_items_path, :if => Proc.new { user_signed_in? }
     end # :home
 
     primary.item :tab_admin, I18n.t('navigation.administration'), admin_path, :if => Proc.new { user_signed_in? && current_user.admin? } do |admin|

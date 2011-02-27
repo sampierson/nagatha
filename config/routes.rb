@@ -1,5 +1,5 @@
 Nagatha::Application.routes.draw do
-  resources :todo_items
+  resources :todos, :as => :todo_items, :controller => 'todo_items'
 
   devise_for :users
 
