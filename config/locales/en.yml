@@ -22,6 +22,8 @@ en:
       prevent_new_signups: Allow logins but prevent new signups
       admins_only: Log out everyone but admins
       fully_operational: Fully operational
+  errors:
+    must_be_supplied: must be supplied
   time_ago: "%{time} ago"
   hello: Hello world
   crud: 

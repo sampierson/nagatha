@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  has_many :todo_items, :order => "position"
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable and :timeoutable
   devise :database_authenticatable, :registerable,
