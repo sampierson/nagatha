@@ -5,7 +5,20 @@ Nagatha::Application.routes.draw do
 
   get "home/index"
 
-  # The priority is based upon order of creation:
+  post "incoming_email/receive"
+
+  root :to => 'home#index'
+
+  resources :todo_items, :except => :show
+
+  match 'admin' => 'admin/home#index'
+
+  namespace :admin do
+    resource :settings, :only => [:edit, :update]
+    resources :users
+  end
+
+    # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
@@ -51,16 +64,5 @@ Nagatha::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  root :to => 'home#index'
-
-  match 'admin' => 'admin/home#index'
-
-  resources :todo_items, :except => :show
-
-  namespace :admin do
-    resource :settings, :only => [:edit, :update]
-    resources :users
-  end
 
 end
