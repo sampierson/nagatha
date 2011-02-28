@@ -1,5 +1,5 @@
 class NagMailer < ActionMailer::Base
-  default :from => "aunty@nagatha.com"
+  default :from => "auntie@nagatha.com"
 
   def nag_email(user)
     @todos = user.todo_items.order('position').limit(2)
