@@ -11,10 +11,6 @@ describe TodoItemsController do
       { :get => "/todo_items/new" }.should route_to(:controller => "todo_items", :action => "new")
     end
 
-    it "recognizes and generates #show" do
-      { :get => "/todo_items/1" }.should route_to(:controller => "todo_items", :action => "show", :id => "1")
-    end
-
     it "recognizes and generates #edit" do
       { :get => "/todo_items/1/edit" }.should route_to(:controller => "todo_items", :action => "edit", :id => "1")
     end
