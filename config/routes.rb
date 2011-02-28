@@ -9,7 +9,12 @@ Nagatha::Application.routes.draw do
 
   root :to => 'home#index'
 
-  resources :todo_items, :except => :show
+  resources :todo_items, :except => :show do
+    member do
+      put 'move_higher'
+      put 'move_lower'
+    end
+  end
 
   match 'admin' => 'admin/home#index'
 

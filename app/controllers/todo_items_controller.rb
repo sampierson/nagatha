@@ -44,6 +44,18 @@ class TodoItemsController < ApplicationController
     redirect_to(todo_items_url)
   end
 
+  def move_higher
+    @todo = current_user.todo_items.find(params[:id])
+    @todo.move_higher
+    redirect_to :action => :index
+  end
+
+  def move_lower
+    @todo = current_user.todo_items.find(params[:id])
+    @todo.move_lower
+    redirect_to :action => :index
+  end
+
   private
 
   def sort_column

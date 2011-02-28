@@ -11,15 +11,16 @@ describe TodoItemsController do
 
     context "when there are Mchines in the db" do
       before do
-        @todo_item1 = Factory.create(:todo_item, :user => @user)
-        @todo_item2 = Factory.create(:todo_item, :user => @user)
+        @todo1 = Factory.create(:todo_item, :user => @user)
+        @todo2 = Factory.create(:todo_item, :user => @user)
+        @todo3 = Factory.create(:todo_item, :user => @user)
       end
 
       describe "#index" do
         it "should populate @todo_items" do
           get :index
           response.should be_success
-          assigns(:todo_items).size.should > 0
+          assigns(:todo_items).should == [@todo1, @todo2, @todo3]
         end
   
         it "should respect sort column and direction" do
@@ -94,17 +95,17 @@ describe TodoItemsController do
   
       # describe "#show" do
       #   it "should retrieve the todo_item and render the show page got the supplied todo_item id" do
-      #     get :show, :id => @todo_item1.to_param
+      #     get :show, :id => @todo1.to_param
       #     response.should render_template('todo_items/show')
-      #     assigns(:todo).should == @todo_item1
+      #     assigns(:todo).should == @todo1
       #   end
       # end
   
       describe "#edit" do
         it "should retrieve the todo_item and render the show page got the supplied todo_item id" do
-          get :edit, :id => @todo_item1.to_param
+          get :edit, :id => @todo1.to_param
           response.should render_template('todo_items/edit')
-          assigns(:todo).should == @todo_item1
+          assigns(:todo).should == @todo1
         end
       end
   
@@ -116,12 +117,12 @@ describe TodoItemsController do
   
           it "should not create a new todo_item" do
             lambda {
-              put :update, :id => @todo_item1.to_param, :todo_item => @todo_item_params
+              put :update, :id => @todo1.to_param, :todo_item => @todo_item_params
             }.should_not change(TodoItem, :count)
           end
   
           it "should rerender the edut page, and return errors" do
-            put :update, :id => @todo_item1.to_param, :todo_item => @todo_item_params
+            put :update, :id => @todo1.to_param, :todo_item => @todo_item_params
             response.should render_template('todo_items/edit')
             flash[:alert].should_not be_blank
             assigns(:todo).errors[:description].should_not be_empty
@@ -134,8 +135,8 @@ describe TodoItemsController do
           end
   
           it "should update the todo_item" do
-            put :update, :id => @todo_item1.to_param, :todo_item => @todo_item_params
-            @todo_item1.reload.description.should == "changed_description"
+            put :update, :id => @todo1.to_param, :todo_item => @todo_item_params
+            @todo1.reload.description.should == "changed_description"
           end
         end
       end
@@ -143,12 +144,28 @@ describe TodoItemsController do
       describe "#destroy" do
         it "should delete the correct todo_item and return to the index page" do
           lambda {
-            delete :destroy, :id => @todo_item1.to_param
+            delete :destroy, :id => @todo1.to_param
           }.should change(TodoItem, :count).by(-1)
           lambda {
-            @todo_item1.reload
+            @todo1.reload
           }.should raise_error(ActiveRecord::RecordNotFound)
           response.should redirect_to(todo_items_path)
+        end
+      end
+
+      describe "#move_higher" do
+        it "should move an item higher in the list" do
+          TodoItem.order('position').all.should == [@todo1, @todo2, @todo3]
+          post :move_higher, :id => @todo2.to_param
+          TodoItem.order('position').all.should == [@todo2, @todo1, @todo3]
+        end
+      end
+
+      describe "#move_lower" do
+        it "should move an item higher in the list" do
+          TodoItem.order('position').all.should == [@todo1, @todo2, @todo3]
+          post :move_lower, :id => @todo2.to_param
+          TodoItem.order('position').all.should == [@todo1, @todo3, @todo2]
         end
       end
     end

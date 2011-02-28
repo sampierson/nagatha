@@ -27,5 +27,12 @@ describe TodoItemsController do
       { :delete => "/todo_items/1" }.should route_to(:controller => "todo_items", :action => "destroy", :id => "1")
     end
 
+    it "recognizes and generates #move_higher" do
+      { :put => "/todo_items/1/move_higher" }.should route_to(:controller => "todo_items", :action => "move_higher", :id => "1")
+    end
+
+    it "recognizes and generates #move_lower" do
+      { :put => "/todo_items/1/move_lower" }.should route_to(:controller => "todo_items", :action => "move_lower", :id => "1")
+    end
   end
 end
