@@ -16,6 +16,8 @@ Nagatha::Application.routes.draw do
     end
   end
 
+  match '/todos' => 'todo_items#index', :as => 'user_root' # user_root_path - Devise will go here after login
+
   match 'admin' => 'admin/home#index'
 
   namespace :admin do
