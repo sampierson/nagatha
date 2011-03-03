@@ -4,6 +4,7 @@ gem 'rails', '3.0.5'
 gem 'sqlite3'
 gem "enumerate_it"
 gem "acts_as_list"
+gem "state_machine"
 
 gem "haml"
 gem "compass"

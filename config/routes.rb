@@ -13,6 +13,7 @@ Nagatha::Application.routes.draw do
     member do
       put 'move_higher'
       put 'move_lower'
+      put 'done'
     end
   end
 

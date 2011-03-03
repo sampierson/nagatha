@@ -1,9 +1,10 @@
 class TodoItemsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :load_todo_item, :except => [:index, :new, :create]
   helper_method :sort_column, :sort_direction
 
   def index
-    @todo_items = current_user.todo_items.all
+    @todo_items = current_user.todo_items.with_status('undone').all
     @machines = TodoItem.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 20, :page => params[:page])
   end
 
@@ -12,7 +13,6 @@ class TodoItemsController < ApplicationController
   end
 
   def edit
-    @todo = TodoItem.find(params[:id])
   end
 
   def create
@@ -27,8 +27,6 @@ class TodoItemsController < ApplicationController
   end
 
   def update
-    @todo = current_user.todo_items.find(params[:id])
-
     if @todo.update_attributes(params[:todo_item])
       redirect_to(todo_items_url, :notice => 'Todo item was successfully updated.')
     else
@@ -38,25 +36,32 @@ class TodoItemsController < ApplicationController
   end
 
   def destroy
-    @todo = current_user.todo_items.find(params[:id])
     @todo.destroy
 
     redirect_to(todo_items_url)
   end
 
   def move_higher
-    @todo = current_user.todo_items.find(params[:id])
     @todo.move_higher
     redirect_to :action => :index
   end
 
   def move_lower
-    @todo = current_user.todo_items.find(params[:id])
     @todo.move_lower
     redirect_to :action => :index
   end
 
+  def done
+    @todo.completed_at = Time.now
+    @todo.done!
+    redirect_to :action => :index
+  end
+
   private
+
+  def load_todo_item
+    @todo = current_user.todo_items.find(params[:id])
+  end
 
   def sort_column
     TodoItem.column_names.include?(params[:sort]) ? params[:sort] : "position"

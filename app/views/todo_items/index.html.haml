@@ -14,5 +14,6 @@
       %td= link_to 'Move Up', move_higher_todo_item_path(todo_item), :method => :put unless todo_item.first?
       %td= link_to 'Move Down', move_lower_todo_item_path(todo_item), :method => :put unless todo_item.last?
       %td= link_to 'Destroy', todo_item, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Done!', done_todo_item_path(todo_item), :method => :put
 %br
 = link_to 'New Todo item', new_todo_item_path
