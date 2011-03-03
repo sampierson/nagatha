@@ -25,7 +25,7 @@ Feature: Authentication
     And I fill in "Email address" with "user@example.com"
     And I fill in "Password" with "password"
     And I press "Login"
-    Then I should be on the home page
+    Then I should be on the todo items page
     And I should see "Signed in successfully"
 
   Scenario: Sign Out

@@ -4,6 +4,9 @@ log/*.log
 tmp/**/*
 db/schema.rb
 .idea
+/coverage.data
+/coverage/
+/webrat.log
 !.gitignore
 
 /spec/javascripts/fixtures

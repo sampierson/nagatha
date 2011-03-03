@@ -17,7 +17,7 @@ Given /^(?:|I )sign in as "([^"]*)" with password "([^"]*)"$/ do |email, passwor
   And "I fill in \"Email address\" with \"#{email}\""
   And "I fill in \"Password\" with \"#{password}\""
   And "I press \"Login\""
-  Then "I should be on the home page"
+  Then "I should be on the todo items page"
   And "I should see \"Signed in successfully\""
 end
 
