@@ -15,6 +15,8 @@ gem "will_paginate", "3.0.pre2"
 gem "devise"
 gem "cancan"
 
+gem "newrelic_rpm"
+
 group :development do
   gem "capistrano"
 end
