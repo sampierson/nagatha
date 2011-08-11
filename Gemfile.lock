@@ -161,6 +161,7 @@ GEM
       ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.4)
       archive-tar-minitar (>= 0.5.2)
+    sass (3.1.7)
     selenium-client (1.2.18)
     selenium-rc (2.3.2)
       selenium-client (>= 1.2.18)
@@ -210,6 +211,7 @@ DEPENDENCIES
   remarkable_activerecord (= 4.0.0.alpha4)
   rspec-rails
   ruby-debug19
+  sass
   simple-navigation
   spork
   sqlite3

@@ -7,6 +7,7 @@ gem "acts_as_list"
 gem "state_machine"
 
 gem "haml"
+gem "sass"
 gem "compass"
 gem "html5-boilerplate"
 gem "simple-navigation"
