@@ -19,6 +19,7 @@ class TodoItemsController < ApplicationController
     @todo = current_user.todo_items.new(params[:todo_item])
 
     if @todo.save
+      @todo.move_to_top
       redirect_to(todo_items_url, :notice => "Todo item \"#{@todo.description}\" created.")
     else
       flash[:alert] = 'There was a problem creating your To Do item'
