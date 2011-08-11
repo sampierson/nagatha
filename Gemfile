@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.9'
 gem 'sqlite3'
 gem "enumerate_it"
 gem "acts_as_list"
